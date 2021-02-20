@@ -10,8 +10,8 @@ const Header = ({ auth }) => {
     console.log("Auth", auth);
   }, [auth]);
   return (
-    <nav>
-      <div className="container">
+    <div className="container">
+      <nav>
         <Link to="/" className="brand-logo">
           MTSDB
         </Link>
@@ -26,9 +26,10 @@ const Header = ({ auth }) => {
             </li>
           )}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
+
 };
 
 const mapStateToProps = ({ auth: { user }}) => {

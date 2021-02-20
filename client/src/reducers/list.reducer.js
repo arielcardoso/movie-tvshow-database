@@ -1,16 +1,15 @@
-import { FETCH_LISTS } from '../actions/types';
+import { FETCH_LIST } from '../actions/types';
 
 const initialState = {
-    list: []
+    titleList: []
 };
 
 const listReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case FETCH_LISTS:
+        case FETCH_LIST:
             return{
-                list: payload
+                titleList: payload
             }
-    
         default:
             return state;
     }
