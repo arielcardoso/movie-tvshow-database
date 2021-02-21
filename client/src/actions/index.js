@@ -11,12 +11,10 @@ export const handleToken = (token) => async (dispatch) => {
   if (response) dispatch({ type: FETCH_USER, payload: response.data });
 };
 
-export const fetchList = () => async (dispatch) => {
-
+export const fetchList = (url) => async (dispatch) => {
 	const apiKey = '87dfa1c669eea853da609d4968d294be';
 	let requestUrl = 'https://api.themoviedb.org/3/' + 'discover/tv?sort_by=popularity.desc&page=1' + '&api_key=' + apiKey;
-  console.log(requestUrl);
   const response = await axios(requestUrl);
-
-  dispatch({ type: FETCH_LIST, payload: response.data });
+  //console.log("TitleList", response.data);
+  dispatch({ type: FETCH_LIST, payload: response.data.results });
 };

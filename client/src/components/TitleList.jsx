@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import TitleItem from './TitleItem'
 import { fetchList } from "../actions";
 
-const TitleList = ({ titleList, fetchList}) => {
+const TitleList = (props) => {
+
+    const {titleList, fetchList} = props;
 
     useEffect(() => {
-      fetchList();
+      fetchList(props.url);
     }, [fetchList]);
 
 		return (
         <div className="TitleList" >
           <div className="Title">
-            <h1>Top TV picks for Jack</h1>
+            <h1>{props.title}</h1>
             <div className="titles-wrapper">
               {titleList &&
-                titleList.reverse().map((data) => (
+                titleList.map((data) => (
                   <TitleItem title={data} />
                 ))
               }

@@ -1,14 +1,14 @@
 import { FETCH_LIST } from '../actions/types';
 
-const initialState = {
+const initState = {
     titleList: []
 };
 
-const listReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
+const listReducer = (state = [initState], action) => {
+    switch (action.type) {
         case FETCH_LIST:
             return{
-                titleList: payload
+                titleList: action.payload
             }
         default:
             return state;
