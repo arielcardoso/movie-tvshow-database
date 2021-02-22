@@ -6,10 +6,11 @@ const Login = (props) => {
     return props.auth ? 
         <Redirect to="/" />
     : (
-        <div style={{ textAlign: 'center'}}>
-            <h1>MTSDB</h1>
+        <div className="loginPage" style={{ textAlign: 'center'}}>
+            <h1>Movie and TV Show Database</h1>
             <p>App where users can view a huge catalogue of Movies and TvShows, create a personal list, leave likes and comments.</p>
-            <a href="/api/auth/google" className="btn" >LOGIN IN WITH GOOGLE</a>
+            <br/>
+            <a href="/api/auth/google" className="btn" >Log in with Google</a>
         </div>
     )
 }
