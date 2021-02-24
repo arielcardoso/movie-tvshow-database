@@ -3,14 +3,13 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
     googleId: String,
-    name: {
+    email: { type: String },
+    name: { type: String },
+    avatar: { type: String },
+    locale: {
       type: String,
-      default: "Username"
+      default: "en-GB"
     },
-    avatar: {
-      type: String,
-      default: "avatar_1.jpg"
-    }
 })
 
 mongoose.model('User', userSchema);
