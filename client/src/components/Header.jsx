@@ -7,23 +7,24 @@ import Navigation from "./Navigation";
 import Search from "./Search";
 import UserProfile from "./UserProfile";
 
-const Header = ({ auth }) => {
+const Header = (props) => {
+  const {auth} = props;
   const [userState, setUserState] = useState(null);
 
   useEffect(() => {
     setUserState(auth);
     console.log("Auth", auth);
   }, [auth]);
+
   return (
     <div className="container">
-      <header className="Header">
+      <header>
 				<Logo />
         {userState ? (
           <>
             <Navigation />
-            <Search onSubmit={this.props.onSubmit} />
-            <UserProfile />
-            <a href="/api/auth/logout">Logout</a>
+            <Search onSubmit={props.onSubmit} />
+            <UserProfile auth={auth} />
           </>
         ) : (
           <a className="btn" href="/api/auth/google">Sign in</a>

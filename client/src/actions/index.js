@@ -13,8 +13,8 @@ export const handleToken = (token) => async (dispatch) => {
 
 export const fetchList = (url) => async (dispatch) => {
 	const apiKey = '87dfa1c669eea853da609d4968d294be';
-	let requestUrl = 'https://api.themoviedb.org/3/' + 'discover/tv?sort_by=popularity.desc&page=1' + '&api_key=' + apiKey;
+	let requestUrl = 'https://api.themoviedb.org/3/' + url + '&api_key=' + apiKey;
   const response = await axios(requestUrl);
-  //console.log("TitleList", response.data);
+  console.log("Url", requestUrl);
   dispatch({ type: FETCH_LIST, payload: response.data.results });
 };

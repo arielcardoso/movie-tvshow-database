@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navigation = () => {
     return (
-        <div id="navigation" className="Navigation">
+        <div id="navigation" className="navigation">
             <nav>
                 <ul>
                     <li>Browse</li>

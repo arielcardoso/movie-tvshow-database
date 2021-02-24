@@ -5,26 +5,24 @@ import { fetchList } from "../actions";
 
 const TitleList = (props) => {
 
-    const {titleList, fetchList} = props;
+  const {titleList, fetchList} = props;
 
-    useEffect(() => {
-      fetchList(props.url);
-    }, [fetchList]);
+  useEffect(() => {
+    fetchList(props.url);
+  }, [fetchList]);
 
-		return (
-        <div className="TitleList" >
-          <div className="Title">
-            <h1>{props.title}</h1>
-            <div className="titles-wrapper">
-              {titleList &&
-                titleList.map((data) => (
-                  <TitleItem title={data} />
-                ))
-              }
-            </div>
-          </div>
-        </div>
-		);
+  return (
+    <>
+      <h2>{props.title}</h2>
+      <div className="titles-wrapper">
+        {titleList &&
+          titleList.map((data) => (
+            <TitleItem title={data} />
+          ))
+        }
+      </div>
+    </>
+  );
 }
 
 const mapStateToProps = ({ lists: {titleList} }) => {
