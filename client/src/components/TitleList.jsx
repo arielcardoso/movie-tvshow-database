@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import axios from 'axios';
 import TitleItem from './TitleItem'
-import { fetchList } from "../actions";
 
 const TitleList = (props) => {
-
-  const {titleList, fetchList} = props;
+  const [listItems, setListItems] = useState();
+  const apiKey = '87dfa1c669eea853da609d4968d294be';
 
   useEffect(() => {
-    fetchList(props.url);
-  }, [fetchList]);
+    axios.get(`https://api.themoviedb.org/3/${props.list.url}&api_key=${apiKey}`)
+      .then(res => {
+        setListItems(res.data.results);
+      })
+  }, [listItems]);
 
   return (
     <>
-      <h2>{props.title}</h2>
+      <div className="container">
+        <h2>{props.list.name}</h2>
+      </div>
       <div className="titles-wrapper">
-        {titleList &&
-          titleList.map((data) => (
-            <TitleItem title={data} />
+        {listItems &&
+          listItems.map((data, index) => (
+            <TitleItem data={data} key={index}  />
           ))
         }
       </div>
@@ -25,8 +29,4 @@ const TitleList = (props) => {
   );
 }
 
-const mapStateToProps = ({ lists: {titleList} }) => {
-  return {titleList}
-}
-
-export default connect(mapStateToProps, {fetchList})(TitleList);
+export default TitleList;
