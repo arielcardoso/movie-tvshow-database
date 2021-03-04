@@ -110,14 +110,14 @@ header {
 }
 .navigation ul {
     display: flex;
-    gap: 4px;
+    gap: 15px;
     height: 26px;
 }
-.navigation ul li {
+.navigation ul li a {
     align-items: center;
     padding: 5px 10px;
 }
-.navigation ul li:hover {
+.navigation ul li a:hover {
     background: var(--primary-color);
     color: #fff;
     cursor: pointer;
@@ -208,6 +208,10 @@ main {
 .titles-wrapper:hover {
     background-color: rgba(0,0,0,0.3)
 }
+.titles-wrapper .Item {
+    width: 50%;
+    max-width: 300px;
+}
 .Item {
     position: relative;
 	background-color: #000;
@@ -218,9 +222,6 @@ main {
 	overflow: hidden;
 	transition: all 1s ease;
     box-shadow: 0 5px 10px rgba(0,0,0, .75);
-
-    width: 50%;
-    max-width: 300px;
 }
 .Item .overlay {
 	background: -moz-linear-gradient(top, rgba(0,0,0, .75) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */

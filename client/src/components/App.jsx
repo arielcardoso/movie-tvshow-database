@@ -7,6 +7,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Login from "./Login";
 import Home from "./Home";
+import MyList from "./MyList";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./NotFound";
 
@@ -21,6 +22,7 @@ const App = ({ fetchUser }) => {
       <Switch>
         <Route path="/login" exact component={Login} />
         <PrivateRoute path="/" exact component={Home} />
+        <PrivateRoute path="/mylist" exact component={MyList} />
         <Route component={NotFound} />
       </Switch>
     </>

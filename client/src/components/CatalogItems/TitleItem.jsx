@@ -9,7 +9,7 @@ const TitleItem = (props) => {
 
     return (
         <div className="Item" id={"title-"+props.data.id} >
-            <img src={'http://image.tmdb.org/t/p/original' + props.data.backdrop_path} alt={props.data.title} />
+            <img src={props.data.image} alt={props.data.title} />
             <div className="overlay">
                 <div className="title">{props.data.title}</div>
                 <div className="rating">Rating {props.data.vote_average}</div>

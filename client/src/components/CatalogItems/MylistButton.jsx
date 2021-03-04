@@ -14,7 +14,7 @@ const MylistButton = (props) => {
     } else {
       const objParams = {
         title: props.data.title,
-        image: `http://image.tmdb.org/t/p/original/${props.data.mtsdb_type}`,
+        image: props.data.image,
         vote_average: props.data.vote_average,
         release_date: props.data.release_date? props.data.release_date : props.data.first_air_date
       };

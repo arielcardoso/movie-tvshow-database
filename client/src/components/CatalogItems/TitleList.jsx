@@ -42,6 +42,8 @@ const TitleList = (props) => {
 
         item["mtsdb_type"] = item.title? "movie" : "tvshow";
 
+        item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
+
         finalList.push(item);
       })
     })
