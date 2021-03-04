@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Logo from "./Logo";
@@ -13,7 +12,6 @@ const Header = (props) => {
 
   useEffect(() => {
     setUserState(auth);
-    console.log("Auth", auth);
   }, [auth]);
 
   return (

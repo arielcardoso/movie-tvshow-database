@@ -1,5 +1,5 @@
 import React from 'react'
-import TitleList from './TitleList'
+import TitleList from './CatalogItems/TitleList'
 
 const homeLists = [
     {

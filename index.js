@@ -4,6 +4,9 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 
 require('./models/user.model');
+require('./models/favorite.model');
+require('./models/mylist.model');
+
 require('./services/passport');
 const keys = require('./config/keys');
 const app = express();
@@ -24,7 +27,7 @@ const authRoutes = require('./routes/auth.route');
 const catalogRoutes = require('./routes/catalog.route');
 
 app.use('/api/auth', authRoutes);
-app.use('/api', catalogRoutes);
+app.use('/api/catalog', catalogRoutes);
 
 if(process.env.NODE_ENV === 'production'){
   //express will serve up production assets

@@ -1,4 +1,3 @@
-import { authenticate } from 'passport';
 import React from 'react'
 
 const UserProfile = (props) => {
