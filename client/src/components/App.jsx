@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 import * as actions from "../actions";
 
-import Header from "./Header";
-import Login from "./Login";
-import Home from "./Home";
-import MyList from "./MyList";
+import Header from "./Elements/Header";
+import Login from "./Pages/Login";
+import Home from "./Pages/Home";
+import MyList from "./Pages/MyList";
 import PrivateRoute from "./PrivateRoute";
-import NotFound from "./NotFound";
+import NotFound from "./Pages/NotFound";
 
 const App = ({ fetchUser }) => {
   useEffect(() => {

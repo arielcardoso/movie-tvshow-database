@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import TitleItem from './CatalogItems/TitleItem'
+import TitleItem from '../CatalogItems/TitleItem'
 
 const MyList = () => {
   const [listItems, setListItems] = useState();
