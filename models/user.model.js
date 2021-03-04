@@ -9,7 +9,7 @@ const userSchema = new Schema({
     locale: {
       type: String,
       default: "en-GB"
-    },
+    }
 })
 
 mongoose.model('User', userSchema);

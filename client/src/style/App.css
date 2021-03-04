@@ -285,7 +285,9 @@ main {
     right: 15px;
     padding-top:2px;
 }
-
+.Item .overlay .filled {
+    color: var(--primary-color);
+}
 .mylist[data-toggled="true"] {
     background: var(--primary-color);
     border: 2px solid var(--primary-color);
