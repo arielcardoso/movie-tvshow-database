@@ -10,7 +10,7 @@ const Login = (props) => {
             <h1>Movie and TV Show Database</h1>
             <p>App where users can view a huge catalogue of Movies and TvShows, create a personal list, leave likes and comments.</p>
             <br/>
-            <a href="/api/auth/google" className="btn" >Log in with Google</a>
+            <a href="/api/auth/google" className="btn btn-danger" >Log in with Google</a>
         </div>
     )
 }

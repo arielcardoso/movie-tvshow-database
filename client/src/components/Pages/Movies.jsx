@@ -36,15 +36,11 @@ const Movies = () => {
   return (
     <main>
       <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h2>MOVIES</h2>
-          </div>
-          {movieLists.map((data, index) => (
-              <TitleList list={data} key={index} />
-          ))}
-        </div>
+        <h2>MOVIES</h2>
       </div>
+      {movieLists.map((data, index) => (
+          <TitleList list={data} key={index} />
+      ))}
     </main>
   )
 }

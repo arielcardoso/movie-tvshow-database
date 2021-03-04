@@ -36,15 +36,11 @@ const TvShow = () => {
   return (
     <main>
       <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h2>TV SHOW</h2>
-          </div>
-          {tvshowLists.map((data, index) => (
-              <TitleList list={data} key={index} />
-          ))}
-        </div>
+        <h2>TV SHOW</h2>
       </div>
+      {tvshowLists.map((data, index) => (
+          <TitleList list={data} key={index} />
+      ))}
     </main>
   )
 }

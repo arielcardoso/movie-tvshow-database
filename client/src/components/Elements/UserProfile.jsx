@@ -20,7 +20,7 @@ const UserProfile = (props) => {
                     <hr className="dropdown-divider"/>
                 </li>
                 <li className="dropdown-item d-grid">
-                    <a className="btn btn-block" href="/api/auth/logout">Logout</a>
+                    <a className="btn btn-danger btn-sm btn-block" href="/api/auth/logout">Logout</a>
                 </li>
             </ul>
         </div>
