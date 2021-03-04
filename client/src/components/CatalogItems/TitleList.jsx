@@ -40,6 +40,7 @@ const TitleList = (props) => {
           item["mtsdb_added_mylist"] = false;
         }
 
+        item["title"] = item.title? item.title : item.name;
         item["mtsdb_type"] = item.title? "movie" : "tvshow";
 
         item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
@@ -54,7 +55,7 @@ const TitleList = (props) => {
   return (
     <>
       <div className="container">
-        <h2>{props.list.name}</h2>
+        <h4>{props.list.name}</h4>
       </div>
       <div className="titles-wrapper">
         {listItems && 
