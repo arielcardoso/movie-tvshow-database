@@ -29,22 +29,20 @@ const TitleList = (props) => {
         const itemType = item.title? "movie" : "tvshow";
 
         if (favoritedItems.filter(fav => fav.id == item.id & fav.type[0] == itemType).length > 0){
-          item["mtsdb_favorited"] = true;
+          item["favorited"] = true;
         } else {
-          item["mtsdb_favorited"] = false;
+          item["favorited"] = false;
         }
 
         if (myListItems.filter(mylist => (mylist.id == item.id & mylist.type == itemType)).length > 0){
-          item["mtsdb_added_mylist"] = true;
+          item["added"] = true;
         } else {
-          item["mtsdb_added_mylist"] = false;
+          item["added"] = false;
         }
 
+        item["type"] = item.title? "movie" : "tvshow";
         item["title"] = item.title? item.title : item.name;
-        item["mtsdb_type"] = item.title? "movie" : "tvshow";
-
         item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
-
         finalList.push(item);
       })
     })

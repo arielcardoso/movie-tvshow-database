@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const MylistButton = (props) => {
-  const [added, setAdded] = useState(props.data.mtsdb_added_mylist);
+  const [added, setAdded] = useState(props.data.added);
   
   const toggleMylist = async () => {
     if (added == true) {
-      await axios.delete(`/api/catalog/mylist/${props.data.mtsdb_type}/${props.data.id}`)
+      await axios.delete(`/api/catalog/mylist/${props.data.type}/${props.data.id}`)
       .then(res => {
         setAdded(!added);
         //console.log(`Title ${props.data.id} removed from my list!`);
@@ -19,7 +19,7 @@ const MylistButton = (props) => {
         release_date: props.data.release_date? props.data.release_date : props.data.first_air_date
       };
       setAdded(true);
-      await axios.post(`/api/catalog/mylist/${props.data.mtsdb_type}/${props.data.id}`, objParams)
+      await axios.post(`/api/catalog/mylist/${props.data.type}/${props.data.id}`, objParams)
       .then(res => {
         //console.log(`Title ${props.data.id} added to my list!`);
       }, (error) => { console.log(error) });

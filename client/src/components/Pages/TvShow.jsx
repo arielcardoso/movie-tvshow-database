@@ -2,10 +2,6 @@ import React from 'react'
 import TitleList from '../CatalogItems/TitleList'
 
 const tvshowLists = [
-  // {
-  //   name: "Popular",
-  //   url: "tv/popular?sort_by=popularity.desc&page=1"
-  // },
   {
     name: "Action & Adventure",
     url: "discover/tv?sort_by=popularity.desc&with_genres=10759"

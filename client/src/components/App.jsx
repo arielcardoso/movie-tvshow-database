@@ -9,7 +9,9 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import MyList from "./Pages/MyList";
 import Movies from "./Pages/Movies";
+import MoviePage from "./Pages/MoviePage";
 import TvShow from "./Pages/TvShow";
+import TvShowPage from "./Pages/TvShowPage";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./Pages/NotFound";
 
@@ -26,7 +28,9 @@ const App = ({ fetchUser }) => {
         <PrivateRoute path="/" exact component={Home} />
         <PrivateRoute path="/mylist" exact component={MyList} />
         <PrivateRoute path="/movies" exact component={Movies} />
+        <PrivateRoute path="/movie/:id" exact component={MoviePage} />
         <PrivateRoute path="/tvshow" exact component={TvShow} />
+        <PrivateRoute path="/tvshow/:id" exact component={TvShowPage} />
         <Route component={NotFound} />
       </Switch>
     </>

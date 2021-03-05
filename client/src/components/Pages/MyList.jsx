@@ -15,7 +15,10 @@ const MyList = () => {
     if (option == 'all') {
       setFilteredItems(listItems);
     } else {
-      setFilteredItems(listItems.filter(mtsdb_type => mtsdb_type == option));
+      console.log("Filter", option);
+      const newlist = listItems.filter(item => item.type == option);
+      console.log("Filtered List", newlist);
+      setFilteredItems(newlist);
     }
   }
 
@@ -36,13 +39,13 @@ const MyList = () => {
     await myListItems.map((item) => {
 
       if (favoritedItems.filter(fav => fav.id == item.id & fav.type[0] == item.type[0]).length > 0){
-        item["mtsdb_favorited"] = true;
+        item["favorited"] = true;
       } else {
-        item["mtsdb_favorited"] = false;
+        item["favorited"] = false;
       }
 
-      item["mtsdb_added_mylist"] = true;
-      item["mtsdb_type"] = item.type[0];
+      item["added"] = true;
+      item["type"] = item.type[0];
     });
 
     console.log("Final list", myListItems);

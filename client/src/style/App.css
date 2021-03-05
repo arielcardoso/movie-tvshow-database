@@ -49,6 +49,23 @@ p {
 img {
 	width: 100%;
 }
+.btn {
+    box-shadow: none !important;
+}
+.icon-button {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: all .5s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0, .75);
+    cursor: pointer;
+}
+.icon-button:hover {
+    opacity: 1;
+    transform: scale(1.3);
+}
+.icon-button .filled {
+    color: var(--primary-color);
+}
 header {
     position: fixed;
     left:0;
@@ -174,6 +191,7 @@ header {
 }
 main {
     padding-top: 120px;
+    padding-bottom: 120px;
 }
 .titles-wrapper {
     display: flex;
@@ -251,15 +269,7 @@ main {
     position: absolute;
     bottom: 10px;
     font-size: 1rem;
-    text-shadow: none;
     opacity: .85;
-    transition: all .5s ease;
-    text-shadow: 0 1px 2px rgba(0,0,0, .75);
-    cursor: pointer;
-}
-.Item .overlay .icon-button:hover {
-    opacity: 1;
-    transform: scale(1.3);
 }
 .Item .overlay .like {
     right: 40px;
@@ -268,9 +278,6 @@ main {
 .Item .overlay .mylist {
     right: 15px;
     padding-top:2px;
-}
-.Item .overlay .filled {
-    color: var(--primary-color);
 }
 .mylist[data-toggled="true"] {
     background: var(--primary-color);

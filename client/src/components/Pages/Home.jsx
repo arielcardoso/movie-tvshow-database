@@ -7,11 +7,11 @@ const homeLists = [
         url: "trending/all/day?page=1"
     },
     {
-        name: "Playing now",
+        name: "Movies playing now",
         url: "movie/now_playing?page=1"
     },
     {
-        name: "On air",
+        name: "TV Shows on air",
         url: "/tv/on_the_air?page=1"
     },
 ];

@@ -1,21 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import FavoriteButton from './FavoriteButton'
 import MylistButton from './MylistButton'
+import { Link } from 'react-router-dom'
 
 const TitleItem = (props) => {
-
-    const titleId = props.data.id;
-    const titleType = props.data.title? "movie" : "tvshow";
-
     return (
         <div className="Item" id={"title-"+props.data.id} >
             <img src={props.data.image} alt={props.data.title} />
-            <div className="overlay">
+            <Link to={`/${props.data.type}/${props.data.id}`} className="overlay">
                 <div className="title">{props.data.title}</div>
                 <div className="rating">Rating {props.data.vote_average}</div>
                 <FavoriteButton data={props.data} />
                 <MylistButton data={props.data} />
-            </div>
+            </Link>
         </div>
     );
 };
