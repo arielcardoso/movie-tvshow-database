@@ -4,7 +4,8 @@ import axios from 'axios';
 const FavoriteButton = (props) => {
   const [favorited, setFavorite] = useState(props.data.favorited);
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e) => {
+    e.preventDefault();
     if (favorited) {
       axios.delete(`/api/catalog/favorite/${props.data.type}/${props.data.id}`)
       .then(res => {

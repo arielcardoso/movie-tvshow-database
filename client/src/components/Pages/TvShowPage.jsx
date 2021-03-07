@@ -4,9 +4,11 @@ import axios from 'axios';
 import Score from "../CatalogItems/Score";
 import FavoriteButton from '../CatalogItems/FavoriteButton';
 import MylistButton from '../CatalogItems/MylistButton';
+import Comments from "../CatalogItems/Comments";
 
 const TvShowPage = (props) => {
-  let { id } = useParams();
+  const { id } = useParams();
+  const type = "tvshow";
   const [titleItem, setTitleItem] = useState();
   
   useEffect(async () => {
@@ -16,11 +18,11 @@ const TvShowPage = (props) => {
 
     await axios.get(`/api/catalog/favorite/tvshow/${id}`).then(res => {
       favorited = res.data.length? true : false;
-    }, (error) => { console.log(error) });
+    }, (error) => { console.log('Error getting favorite info', error) });
 
     await axios.get(`/api/catalog/mylist/tvshow/${id}`).then(res => {
       added = res.data.length? true : false;
-    }, (error) => { console.log(error) });
+    }, (error) => { console.log('Error getting mylist info', error) });
 
     await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&append_to_response=videos`)
     .then(async res => {
@@ -32,10 +34,10 @@ const TvShowPage = (props) => {
         item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
         item["poster"] = `http://image.tmdb.org/t/p/original/${item.poster_path}`;
         
-        console.log("TvShow Item", item);
+        //console.log("TvShow Item", item);
         setTitleItem(item);
       }
-    });
+    }, (error) => { console.log('Error getting tvshow info', error) });
   },[])
 
   return (
@@ -43,10 +45,10 @@ const TvShowPage = (props) => {
       <div className="container">
         {titleItem &&  (
           <div className="row" style={{background: titleItem["image"] }} >
-            <div className="col-4">
-              <img src={titleItem["poster"]} className="rounded" />
+            <div className="col-12 col-sm-4">
+              <img src={titleItem["poster"]} className="rounded img-fluid" style={{maxWidth:'370px'}} />
             </div>
-            <div className="col-8">
+            <div className="col-12 col-sm-8">
               <h1 className="mt-4">
                 {titleItem["name"]}&nbsp;
                 <span className="fw-normal small" >
@@ -59,6 +61,9 @@ const TvShowPage = (props) => {
               <p>
                 {titleItem["genres"].map((genre, index) => ( <span className="badge bg-danger me-2" key={index} >{genre.name}</span>)) }
               </p>
+
+              {titleItem["tagline"] && <p className="lead font-italic">{titleItem["tagline"]}</p>}
+
               <h4 className="mt-4">Sinopse</h4>
               <p className="text-white mt-3" >{titleItem["overview"]}</p>
               
@@ -74,7 +79,8 @@ const TvShowPage = (props) => {
                 </div>
               </div>
               
-
+              <h4 className="mt-5">Comments</h4>
+              <Comments id={id} type={type} />
             </div>
           </div>
         )}

@@ -12,7 +12,7 @@ const homeLists = [
     },
     {
         name: "TV Shows on air",
-        url: "/tv/on_the_air?page=1"
+        url: "tv/on_the_air?page=1"
     },
 ];
 

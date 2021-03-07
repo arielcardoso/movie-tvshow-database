@@ -6,6 +6,7 @@ const passport = require('passport');
 require('./models/user.model');
 require('./models/favorite.model');
 require('./models/mylist.model');
+require('./models/comment.model');
 
 require('./services/passport');
 const keys = require('./config/keys');

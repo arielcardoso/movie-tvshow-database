@@ -4,9 +4,11 @@ import axios from 'axios';
 import Score from "../CatalogItems/Score";
 import FavoriteButton from '../CatalogItems/FavoriteButton';
 import MylistButton from '../CatalogItems/MylistButton';
+import Comments from "../CatalogItems/Comments";
 
 const MoviePage = (props) => {
   let { id } = useParams();
+  const type = "movie";
   const [titleItem, setTitleItem] = useState();
   
   useEffect(async () => {
@@ -43,7 +45,7 @@ const MoviePage = (props) => {
         {titleItem &&  (
           <div className="row" style={{background: titleItem["image"] }} >
             <div className="col-4">
-              <img src={titleItem["poster"]} className="rounded" />
+              <img src={titleItem["poster"]} className="rounded img-fluid" style={{maxWidth:'370px'}} />
             </div>
             <div className="col-8">
               <h1 className="mt-4">{titleItem["title"]} <span className="fw-normal small" >({ titleItem["release_date"].substr(0, 4) })</span></h1>
@@ -64,8 +66,9 @@ const MoviePage = (props) => {
                   <MylistButton data={titleItem} />
                 </div>
               </div>
-              
 
+              <h4 className="mt-5">Comments</h4>
+              <Comments id={id} type={type} />
             </div>
           </div>
         )}

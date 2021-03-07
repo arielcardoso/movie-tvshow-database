@@ -7,10 +7,7 @@ const FavoriteSchema = new Schema({
     ref: 'User'
   },
   id: Number,
-  type: {
-    type: [String],
-    enum: ['movie','tvshow']
-  },
+  type: String,
   createdAt: {
     type: Date,
     default: Date.now

@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const mylistSchema = new Schema({
+const CommentSchema = new Schema({
   _user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
   id: Number,
   type: String,
-  title: String,
-  rating: Number,
-  image: String,
-  release_date: Date,
+  message: String,
   createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
-mongoose.model('Mylist', mylistSchema);
+mongoose.model('Comment', CommentSchema);

@@ -14,13 +14,23 @@ const TitleList = (props) => {
 
     await axios.get(`/api/catalog/favorite`).then(res => {
       favoritedItems = res.data;
-    }, (error) => { console.log(error) });
-    //console.log("Favorited items", favoritedItems);
+    }).catch((error) => {
+      if (error.response) { // if there is response, it means its not a 50x, but 4xx
+        console.log('Error getting all favorite', error.response)
+      } else {   // gets activated on 50x errors, since no response from server
+        console.log('Error getting all favorite', error)
+      } 
+    });
 
     await axios.get(`/api/catalog/mylist`).then(res => {
       myListItems = res.data;
-    }, (error) => { console.log(error) });
-    //console.log("My List items", myListItems);
+    }).catch((error) => {
+      if (error.response) { // if there is response, it means its not a 50x, but 4xx
+        console.log('Error getting all mylist titles', error.response)
+      } else {   // gets activated on 50x errors, since no response from server
+        console.log('Error getting all mylist titles', error)
+      } 
+    });
 
     await axios.get(`https://api.themoviedb.org/3/${props.list.url}&api_key=${apiKey}`)
     .then(async res => {
@@ -28,7 +38,7 @@ const TitleList = (props) => {
       res.data.results.map((item)=>{
         const itemType = item.title? "movie" : "tvshow";
 
-        if (favoritedItems.filter(fav => fav.id == item.id & fav.type[0] == itemType).length > 0){
+        if (favoritedItems.filter(fav => fav.id == item.id & fav.type == itemType).length > 0){
           item["favorited"] = true;
         } else {
           item["favorited"] = false;
@@ -45,8 +55,14 @@ const TitleList = (props) => {
         item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
         finalList.push(item);
       })
-    })
-    //console.log("Final List", finalList);
+    }).catch((error) => {
+      if (error.response) { // if there is response, it means its not a 50x, but 4xx
+        console.log('Error getting TMDB List', error.response)
+      } else {   // gets activated on 50x errors, since no response from server
+        console.log('Error getting TMDB List', error)
+      } 
+    });
+
     setListItems(finalList);
   },[])
   

@@ -6,6 +6,7 @@ const requireLogin = require('../middlewares/requireLogin');
 
 const Mylist = mongoose.model("Mylist");
 const Favorite = mongoose.model("Favorite");
+const Comment = mongoose.model("Comment");
 
 router.get('/', requireLogin , async (req, res) => {
   res.send(requireLogin);
@@ -50,8 +51,14 @@ router.post('/favorite/:type/:titleId', async (req,res) => {
 
 //Get all favorited items
 router.get('/favorite', async (req,res) => {
-  const list = await Favorite.find({_user:req.user.id});
-  res.send(list);
+
+  try {
+    const list = await Favorite.find({_user:req.user.id});
+    res.send(list);
+  } catch (err) {
+    res.send(err);
+  }
+  
 });
 
 /*
@@ -102,17 +109,46 @@ router.get('/mylist', async (req,res) => {
 });
 
 /*
-Title Details
-http://localhost:5000/api/catalog/movie/458576/
+Comments
+http://localhost:5000/api/catalog/comments/movie/458576
 */
-router.get('/:type/:titleId', async (req,res) => {
+router.get('/comments/:type/:titleId', async (req,res) => {
   const type = req.params.type;
   const titleId = parseInt(req.params.titleId);
   
-  try {
-  } catch (err) {}
+  //const result = await Comment.find({type:type, id:titleId});
+  const result = await Comment.aggregate([
+  { "$match": { "type": type, 'id': titleId} },  
+  {
+    "$lookup": {
+      'from': 'users',
+      'localField': '_user',
+      'foreignField': '_id',
+      'as': 'user',
+    }
+  }]);
 
-  res.send('<br><br><h1 style="text-align:center;">Nothing here =(<h1>');
+  res.send(result);
+});
+
+router.post('/comments/:type/:titleId', async (req,res) => {
+  const type = req.params.type;
+  const titleId = parseInt(req.params.titleId);
+  const { message } = req.body;
+  
+  const newComment = new Comment({
+    _user: req.user.id,
+    type,
+    id: titleId,
+    message: message,
+    createdAt: Date.now(),
+  });
+
+  try {
+    res.send(await newComment.save());
+  } catch (err) {
+    res.status(422).send(err);
+  }
 });
 
 module.exports = router;

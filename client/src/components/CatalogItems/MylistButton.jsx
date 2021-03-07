@@ -4,9 +4,10 @@ import axios from 'axios';
 const MylistButton = (props) => {
   const [added, setAdded] = useState(props.data.added);
   
-  const toggleMylist = async () => {
+  const toggleMylist = (e) => {
+    e.preventDefault();
     if (added == true) {
-      await axios.delete(`/api/catalog/mylist/${props.data.type}/${props.data.id}`)
+      axios.delete(`/api/catalog/mylist/${props.data.type}/${props.data.id}`)
       .then(res => {
         setAdded(!added);
         //console.log(`Title ${props.data.id} removed from my list!`);
@@ -19,7 +20,7 @@ const MylistButton = (props) => {
         release_date: props.data.release_date? props.data.release_date : props.data.first_air_date
       };
       setAdded(true);
-      await axios.post(`/api/catalog/mylist/${props.data.type}/${props.data.id}`, objParams)
+      axios.post(`/api/catalog/mylist/${props.data.type}/${props.data.id}`, objParams)
       .then(res => {
         //console.log(`Title ${props.data.id} added to my list!`);
       }, (error) => { console.log(error) });

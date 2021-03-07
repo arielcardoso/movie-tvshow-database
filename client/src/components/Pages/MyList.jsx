@@ -28,24 +28,24 @@ const MyList = () => {
 
     await axios.get(`/api/catalog/favorite`).then(res => {
       favoritedItems = res.data;
-    }, (error) => { console.log(error) });
+    }, (error) => { console.log('Error getting all favorite', error) });
     //console.log("Favorited items", favoritedItems);
 
     await axios.get(`/api/catalog/mylist`).then(res => {
       myListItems = res.data;
-    }, (error) => { console.log(error) });
+    }, (error) => { console.log('Error getting all mylist titles', error) });
     //console.log("My List items", myListItems);
 
     await myListItems.map((item) => {
 
-      if (favoritedItems.filter(fav => fav.id == item.id & fav.type[0] == item.type[0]).length > 0){
+      if (favoritedItems.filter(fav => fav.id == item.id & fav.type == item.type).length > 0){
         item["favorited"] = true;
       } else {
         item["favorited"] = false;
       }
 
       item["added"] = true;
-      item["type"] = item.type[0];
+      item["type"] = item.type;
     });
 
     console.log("Final list", myListItems);
