@@ -59,6 +59,13 @@ img {
 .icon-button .filled {
     color: $primary-color;
 }
+.btn-search {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+}
+
 header {
     position: fixed;
     left: 0;
@@ -116,36 +123,6 @@ header {
                     cursor: pointer;
                     border-radius: 3px;
                 }
-            }
-        }
-    }
-    .search {
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        pointer-events: none;
-        input {
-            font-family: "Lato", sans-serif;
-            font-weight: 400;
-            font-size: 14px;
-            height: 37px;
-            width: 20%;
-            background: transparent;
-            color: #fff;
-            appearance: none;
-            border: 0;
-            border: 2px solid rgba(#f5f5f1, 0.1);
-            outline: none;
-            border-radius: 37px;
-            padding: 0 20px;
-            pointer-events: all;
-            transition: border 0.25s ease, width 0.125s ease 0.125s;
-            &:focus {
-                border: 2px solid $primary-color;
-                width: 30%;
             }
         }
     }

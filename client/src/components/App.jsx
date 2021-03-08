@@ -8,6 +8,7 @@ import Header from "./Elements/Header";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import MyList from "./Pages/MyList";
+import Search from "./Pages/Search";
 import Movies from "./Pages/Movies";
 import MoviePage from "./Pages/MoviePage";
 import TvShow from "./Pages/TvShow";
@@ -26,6 +27,7 @@ const App = ({ fetchUser }) => {
       <Switch>
         <Route path="/login" exact component={Login} />
         <PrivateRoute path="/" exact component={Home} />
+        <PrivateRoute path="/search" exact component={Search} />
         <PrivateRoute path="/mylist" exact component={MyList} />
         <PrivateRoute path="/movies" exact component={Movies} />
         <PrivateRoute path="/movie/:id" exact component={MoviePage} />

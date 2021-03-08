@@ -9,7 +9,9 @@ const TitleItem = (props) => {
             <img src={props.data.image} alt={props.data.title} />
             <Link to={`/${props.data.type}/${props.data.id}`} className="overlay">
                 <div className="title">{props.data.title}</div>
-                <div className="rating">Rating {props.data.vote_average}</div>
+                {props.data.vote_average != 0 &&
+                    (<div className="rating">Rating {props.data.vote_average}</div>)
+                }
                 <FavoriteButton data={props.data} />
                 <MylistButton data={props.data} />
             </Link>

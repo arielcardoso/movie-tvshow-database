@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import Logo from "./Logo";
 import Navigation from "./Navigation";
-import Search from "./Search";
 import UserProfile from "./UserProfile";
 
 const Header = (props) => {
@@ -21,7 +20,6 @@ const Header = (props) => {
         {userState ? (
           <>
             <Navigation />
-            <Search onSubmit={props.onSubmit} />
             <UserProfile auth={auth} />
           </>
         ) : (

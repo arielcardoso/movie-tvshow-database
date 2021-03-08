@@ -16,6 +16,9 @@ const Navigation = () => {
                         <Link to="/tvshow">TV Show</Link>
                     </li>
                     <li>
+                        <Link to="/search">Search</Link>
+                    </li>
+                    <li>
                         <Link to="/mylist">My List</Link>
                     </li>
                 </ul>

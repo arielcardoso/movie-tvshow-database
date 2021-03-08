@@ -15,7 +15,13 @@ const Comments = (props) => {
     await axios.get(`/api/catalog/comments/${type}/${id}`).then(res => {
       console.log("Comments", res.data.reverse());
       setComments(res.data);
-    }, (error) => { console.log("Error", error) });
+    }).catch((error) => {
+      if (error.response) { // if there is response, it means its not a 50x, but 4xx
+        console.log('Error getting all favorite', error.response)
+      } else {   // gets activated on 50x errors, since no response from server
+        console.log('Error getting all favorite', error)
+      } 
+    });
   }
 
   const handleChange = (e) => {
