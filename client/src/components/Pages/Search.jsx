@@ -23,7 +23,7 @@ const Search = () => {
             (item.media_type == 'movie' || item.media_type == 'tv') && 
             (item.backdrop_path != null)
             ) {
-            item["type"] = item.media_type == 'movie'? 'movie' : 'tv';
+            item["type"] = item.media_type == 'movie'? 'movie' : 'tvshow';
             item["title"] = item.title? item.title : item.name;
             item["image"] = `http://image.tmdb.org/t/p/original/${item.backdrop_path}`;
             list.push(item);
