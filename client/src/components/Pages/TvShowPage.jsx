@@ -12,7 +12,8 @@ const TvShowPage = (props) => {
   const [titleItem, setTitleItem] = useState();
   
   useEffect(async () => {
-    const apiKey = '87dfa1c669eea853da609d4968d294be';
+    
+    const apiKey = process.env.REACT_APP_TMDB_KEY;
     let favorited = false;
     let added = false;
 
@@ -24,6 +25,7 @@ const TvShowPage = (props) => {
       added = res.data.length? true : false;
     }, (error) => { console.log('Error getting mylist info', error) });
 
+    console.log(process.env);
     await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&append_to_response=videos`)
     .then(async res => {
       if (res.data) {

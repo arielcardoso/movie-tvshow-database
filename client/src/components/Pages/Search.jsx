@@ -5,7 +5,7 @@ import TitleItem from '../CatalogItems/TitleItem'
 const Search = () => {
   const [listItems, setListItems] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const apiKey = '87dfa1c669eea853da609d4968d294be';
+  const apiKey = process.env.REACT_APP_TMDB_KEY;
 
   const handleChange = (e) => {
     setKeyword(e.target.value);

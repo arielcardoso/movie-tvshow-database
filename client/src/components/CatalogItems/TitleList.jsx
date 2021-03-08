@@ -10,7 +10,7 @@ const TitleList = (props) => {
     let finalList = [];
     let favoritedItems = [];
     let myListItems = [];
-    const apiKey = '87dfa1c669eea853da609d4968d294be';
+    const apiKey = process.env.REACT_APP_TMDB_KEY;
 
     await axios.get(`/api/catalog/favorite`).then(res => {
       favoritedItems = res.data;

@@ -12,7 +12,7 @@ const MoviePage = (props) => {
   const [titleItem, setTitleItem] = useState();
   
   useEffect(async () => {
-    const apiKey = '87dfa1c669eea853da609d4968d294be';
+    const apiKey = process.env.REACT_APP_TMDB_KEY;
     let favorited = false;
     let added = false;
 
